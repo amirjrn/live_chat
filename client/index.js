@@ -209,6 +209,11 @@ function onTorrent (torrent) {
     '<a href="' + escapeHtml(torrent.torrentFileBlobURL) + '" target="_blank" download="' + escapeHtml(torrentFileName) + '">[Download .torrent]</a>'
   )
 
+
+  // *******************************************************************************
+
+
+  
   function updateSpeed () {
     const progress = (100 * torrent.progress).toFixed(1)
 
@@ -231,6 +236,11 @@ function onTorrent (torrent) {
     )
   }
 
+
+  // *******************************************************************************
+
+
+  
   torrent.on('download', throttle(updateSpeed, 250))
   torrent.on('upload', throttle(updateSpeed, 250))
   setInterval(updateSpeed, 5000)
@@ -257,6 +267,11 @@ function onTorrent (torrent) {
     })
   })
 
+
+  // *******************************************************************************
+
+
+  
   const downloadZip = document.createElement('a')
   downloadZip.href = '#'
   downloadZip.target = '_blank'
@@ -296,7 +311,19 @@ function onTorrent (torrent) {
       })
     })
   })
-  util.appendElemToLog(downloadZip)
+
+
+  // *******************************************************************************
+
+
+  
+      util.appendElemToLog(downloadZip)
+
+
+  // *******************************************************************************
+
+
+  
       var form = document.getElementById("chat")
       form.addEventListener('submit' , function(e){
         e.preventDefault()
