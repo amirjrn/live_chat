@@ -12,6 +12,7 @@ const uploadElement = require('upload-element')
 const WebTorrent = require('webtorrent')
 const JSZip = require('jszip')
 const SimplePeer = require('simple-peer')
+const utLiveChat = require('ut_live_chat')
 
 const util = require('./util')
 
@@ -170,10 +171,26 @@ function seed (files) {
   })
 }
 
+
 function onTorrent (torrent) {
   torrent.on('warning', util.warning)
+  torrent.on('wire' , function(wire){
+    try{
+      wire.use(utLiveChat())
+    }
+    catch(err){
+      console.error(err)
+    }
+  })
   torrent.on('error', util.error)
-
+  torrent.on('done', function(){
+    
+    console.log('sent messages')
+    
+    setTimeout(() => {
+       console.log('l' ,torrent.wires)
+    }, 2000);
+  })
   const upload = document.querySelector('input[name=upload]')
   upload.value = upload.defaultValue // reset upload element
 
@@ -280,4 +297,10 @@ function onTorrent (torrent) {
     })
   })
   util.appendElemToLog(downloadZip)
+      var form = document.getElementById("chat")
+      form.addEventListener('submit' , function(e){
+        e.preventDefault()
+         var input = document.getElementById("chatInput").value;
+         torrent.wires.map(wire => wire.extended('ut_live_chat' , input))
+      })
 }

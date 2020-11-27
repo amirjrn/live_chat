@@ -2,10 +2,7 @@ extends layout
 
 block body
   main
-    picture.logo
-      source(srcset='/logo.svg')
-      img(src='/logo.png' alt='Instant.io')
-    p.subtitle Streaming file transfer over <a href="http://webtorrent.io" target="_blank">WebTorrent</a> (torrents on the web)
+    
 
     h1#logHeading(style='display: none') Log
     .speed
@@ -24,6 +21,13 @@ block body
         label(for='torrentId') Download from a magnet link or info hash
         input(name='torrentId', placeholder='magnet:', required)
         button(type='submit') Download
-
+    section
+      h1 messages
+      div.messages
+    section 
+      h1 chat
+      form#chat
+        input#chatInput(name='chat', placeholder='message', required)
+        button(type='submit') Send
     footer
       p: small Powered by <a href="http://webtorrent.io" target="_blank">WebTorrent</a>. 100% open source &amp; free software. Works in Chrome, Firefox, and Opera. Source code available on <a href="https://github.com/webtorrent/instant.io" target="_blank">GitHub</a>. © 2020 WebTorrent, LLC.
