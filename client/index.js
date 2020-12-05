@@ -12,8 +12,8 @@ const uploadElement = require('upload-element')
 const WebTorrent = require('webtorrent')
 const JSZip = require('jszip')
 const SimplePeer = require('simple-peer')
-const utLiveChat = require('ut_live_chat')
-
+const utLiveChat = require('@AmirJiryan/live-chat-extension')
+const uuidv4 = require('uuid').v4
 const util = require('./util')
 
 global.WEBTORRENT_ANNOUNCE = createTorrent.announceList
@@ -175,8 +175,18 @@ function seed (files) {
 function onTorrent (torrent) {
   torrent.on('warning', util.warning)
   torrent.on('wire' , function(wire){
+    var chatList = document.getElementById("chatList");
+    var br = document.createElement('br')
     try{
-      wire.use(utLiveChat())
+     
+      wire.use(utLiveChat(torrent.wires))
+      wire.ut_live_chat.on('chat', function(chat){
+         console.log(torrent.wires)
+         var node = document.createElement("LI");                 // Create a <li> node
+         var textnode = document.createTextNode(chat.content.toString());         // Create a text node
+         node.appendChild(textnode);                              // Append the text to <li>
+         chatList.appendChild(node);     // Append <li> to <ul> with 
+      })
     }
     catch(err){
       console.error(err)
@@ -188,7 +198,7 @@ function onTorrent (torrent) {
     console.log('sent messages')
     
     setTimeout(() => {
-       console.log('l' ,torrent.wires)
+       console.log('wires' ,torrent.wires)
     }, 2000);
   })
   const upload = document.querySelector('input[name=upload]')
@@ -320,14 +330,20 @@ function onTorrent (torrent) {
       util.appendElemToLog(downloadZip)
 
 
+      
   // *******************************************************************************
 
 
   
       var form = document.getElementById("chat")
+      
       form.addEventListener('submit' , function(e){
         e.preventDefault()
          var input = document.getElementById("chatInput").value;
-         torrent.wires.map(wire => wire.extended('ut_live_chat' , input))
+         const userName = 'Amir'
+         const id = uuidv4()
+         var supportingLiveChat = torrent.wires.filter(wire => wire.peerExtendedMapping.ut_live_chat)
+         supportingLiveChat.map(wire => wire.extended('ut_live_chat' , {id, content : input, userName}))
       })
+      
 }

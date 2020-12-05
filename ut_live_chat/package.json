@@ -1,0 +1,65 @@
+{
+  "_args": [
+    [
+      "ut_live_chat@1.0.0",
+      "/home/amir/Desktop/instant.io"
+    ]
+  ],
+  "_from": "ut_live_chat@1.0.0",
+  "_id": "ut_live_chat@1.0.0",
+  "_inBundle": false,
+  "_location": "/ut_live_chat",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "ut_live_chat@1.0.0",
+    "name": "ut_live_chat",
+    "escapedName": "ut_live_chat",
+    "rawSpec": "1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "1.0.0"
+  },
+  "_requiredBy": [
+    "/webtorrent"
+  ],
+  "_resolved": "",
+  "_spec": "1.0.0",
+  "_where": "/home/amir/Desktop/instant.io",
+  "author": {
+    "name": "WebTorrent LLC",
+    "email": "feross@webtorrent.io",
+    "url": "https://webtorrent.io"
+  },
+  "bugs": {
+    "url": "https://github.com/webtorrent/ut_live_chat/issues"
+  },
+  "dependencies": {
+    "bencode": "^2.0.0",
+    "compact2string": "^1.2.0",
+    "string2compact": "^1.2.5"
+  },
+  "description": "Extension sending custom messages",
+  "devDependencies": {
+    "bittorrent-protocol": "^3.0.0",
+    "standard": "*",
+    "tape": "^4.5.1"
+  },
+  "keywords": [
+    "bittorrent",
+    "discovery",
+    "extension",
+    "p2p",
+    "torrent",
+    "ut_live_chat"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "ut_live_chat",
+  "repository": {
+  },
+  "scripts": {
+    "test": "standard && tape test/*.js"
+  },
+  "version": "1.0.0"
+}

@@ -90,7 +90,7 @@ app.use(express.static(path.join(__dirname, '../static')))
 
 app.get('/', function (req, res) {
   res.render('index', {
-    title: 'Instant.io - Streaming file transfer over WebTorrent'
+    title: 'Live Chat'
   })
 })
 
