@@ -11,7 +11,7 @@
     "url": "https://github.com/webtorrent/instant.io/issues"
   },
   "dependencies": {
-    "@AmirJiryan/live-chat-extension": "^1.0.0",
+    "@ting/live-chat-extension": "^1.0.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "create-torrent": "^4.4.2",
