@@ -12,7 +12,7 @@ const uploadElement = require('upload-element')
 const WebTorrent = require('webtorrent')
 const JSZip = require('jszip')
 const SimplePeer = require('simple-peer')
-const utLiveChat = require('@AmirJiryan/live-chat-extension')
+const utLiveChat = require('@ting/live-chat-extension')
 const uuidv4 = require('uuid').v4
 const util = require('./util')
 
