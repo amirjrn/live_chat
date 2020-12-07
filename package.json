@@ -42,11 +42,7 @@
     "watchify": "^3.11.1"
   },
   "homepage": "https://instant.io",
-  "husky": {
-    "hooks": {
-      "pre-push": "npm test"
-    }
-  },
+  
   "keywords": [
     "data channel",
     "file transfer",
